@@ -1,0 +1,12 @@
+<app-add-note (noteAdd)="addNote($event)"></app-add-note>
+
+<ng-template [ngIf]="notes.length !== 0">
+    <div class="row">
+        <div class="col-md-4" *ngFor="let note of notes">
+            <app-note-item [note]="note" (noteDelete)="deleteNote($event)"></app-note-item>
+        </div>
+    </div>
+</ng-template>
+<ng-template [ngIf]="notes.length === 0">
+    <div class="alert alert-secondary"><p class="mb-0">No notes avalable!</p></div>
+</ng-template>
