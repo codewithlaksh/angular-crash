@@ -7,6 +7,11 @@ import { NotesComponent } from './components/notes/notes.component';
 import { NoteItemComponent } from './components/note-item/note-item.component';
 import { AddNoteComponent } from './components/add-note/add-note.component';
 import { FormsModule } from '@angular/forms';
+import { AboutComponent } from './pages/about/about.component';
+import { HeaderComponent } from './components/header/header.component';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
+// import {}
 
 enableProdMode()
 
@@ -15,12 +20,16 @@ enableProdMode()
     AppComponent,
     NotesComponent,
     NoteItemComponent,
-    AddNoteComponent
+    AddNoteComponent,
+    AboutComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    LoadingBarModule,
+    LoadingBarRouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,9 @@
+<h1>Add your Note</h1>
 <app-add-note (noteAdd)="addNote($event)"></app-add-note>
 
+<hr class="my-3">
+
+<h1>Your notes</h1>
 <ng-template [ngIf]="notes.length !== 0">
     <div class="row">
         <div class="col-md-4" *ngFor="let note of notes">

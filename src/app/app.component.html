@@ -1,5 +1,6 @@
-<div class="container my-3">
-  <h2>Your Notes</h2>
+<ngx-loading-bar color="#FF0000" [includeSpinner]="false" height="4px"></ngx-loading-bar>
+<app-header></app-header>
 
-  <app-notes></app-notes>
+<div class="container my-3">
+  <router-outlet></router-outlet>
 </div>
