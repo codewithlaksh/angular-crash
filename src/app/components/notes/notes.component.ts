@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Note } from 'src/notes';
+import { NotesService } from 'src/app/services/notes.service';
 
 @Component({
   selector: 'app-notes',
@@ -7,31 +8,34 @@ import { Note } from 'src/notes';
   styleUrls: ['./notes.component.css']
 })
 export class NotesComponent implements OnInit {
-  notes: Note[];
+  notes: Note[] = [];
   
-  constructor() {
-    const local = localStorage.getItem('notes-app');
+  constructor(private notesService: NotesService) {
+    // const local = localStorage.getItem('notes-app');
 
-    if (local) {
-      this.notes = JSON.parse(local);
-    } else {
-      this.notes = [];
-    }
+    // if (local) {
+    //   this.notes = JSON.parse(local);
+    // } else {
+    //   this.notes = [];
+    // }
   }
 
   ngOnInit(): void {
+    this.notesService.getNotes().subscribe((notes) => {
+      this.notes = notes;
+    })
   }
 
   deleteNote(note: Note) {
-    const index = this.notes.indexOf(note);
-    this.notes.splice(index);
-    localStorage.setItem('notes-app', JSON.stringify(this.notes));
+    this.notesService.deleteNote(note).subscribe(() => {
+      this.notes = this.notes.filter((e) => e.id !== note.id)
+    })
   }
 
   addNote(note: Note) {
-    this.notes.push(note);
-    console.log(note)
-    localStorage.setItem('notes-app', JSON.stringify(this.notes));
+    this.notesService.addNote(note).subscribe((note) => {
+      this.notes.push(note);
+    })
   }
 
 }

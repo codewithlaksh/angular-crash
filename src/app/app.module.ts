@@ -11,7 +11,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
-// import {}
+import { HttpClientModule } from '@angular/common/http';
 
 enableProdMode()
 
@@ -29,7 +29,8 @@ enableProdMode()
     AppRoutingModule,
     FormsModule,
     LoadingBarModule,
-    LoadingBarRouterModule
+    LoadingBarRouterModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
