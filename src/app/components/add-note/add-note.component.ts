@@ -16,13 +16,17 @@ export class AddNoteComponent implements OnInit {
   }
 
   handleSubmit() {
-    const note = {
-      id: crypto.randomUUID(),
-      body: this.body,
-      date: new Date()
+    if (!this.body) {
+      alert("Please enter text!")
+    } else {
+      const note = {
+        id: crypto.randomUUID(),
+        body: this.body,
+        date: new Date()
+      }
+      this.noteAdd.emit(note);
+      this.body = "";
     }
-    this.noteAdd.emit(note);
-    this.body = "";
   }
 
 }
